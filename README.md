@@ -16,8 +16,16 @@ source ot_env/bin/activate
 pip install -r requirements.txt
 ```
 
-## Running the detection process
+## Replication of our experiments
 
+First, start by downloading the data with statistics (attention weights, detection scores, and others):
+```shell
+https://web.tecnico.ulisboa.pt/~ist178550/ot-hallucination-detection-data.zip
+```
+
+After you unzip it, you will find two files (one with the stats for the hallucination corpus from Guerreiro et al. (2022) and one with stats for the heldout set used in our work -- also derived from the same work).
+
+To replicate our experiments, just run the code on `run_detection.ipynb`.
 
 ## If you found our work/code useful, please cite our work:
 ```bibtex
