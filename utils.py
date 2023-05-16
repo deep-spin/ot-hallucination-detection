@@ -79,28 +79,23 @@ def apply_length_restrictions(u_matrix, dataset_attn_train, args):
 
     return dataset_constraint
 
-def compute_detection_metrics_wass(wasserstein_distances, dataset_stats, args, bottom_k=4):
-    x_df = wasserstein_distances
-    if not args.compare_to_uni:
-        x_df = [sorted(x_samp) for x_samp in x_df]
-        x_df = [np.mean(x_samp[:bottom_k]) for x_samp in x_df]
-        dataset_stats["wass_dist"] = x_df
-    else:
-        dataset_stats["wass_dist"] = x_df
-
-    df_all = compute_metrics(dataset_stats, category="is_hall", metrics = ["wass_dist"])
+def compute_detection_metrics(dataset_stats, args, bottom_k=4, metrics=["wass_dist"]):
+    df_all = compute_metrics(dataset_stats, category="is_hall", metrics = metrics)
     auroc_all = df_all["auc-ROC"].values[0]
     fprat90_all = df_all["fprat90tpr"].values[0]
 
-    df_osc = compute_metrics(dataset_stats, category="is_osc", metrics = ["wass_dist"])
+    dataset_stats_osc = dataset_stats.loc[(dataset_stats.is_osc == 1) | (dataset_stats.is_hall == 0)]
+    df_osc = compute_metrics(dataset_stats_osc, category="is_osc", metrics = metrics)
     auroc_osc = df_osc["auc-ROC"].values[0]
     fprat90_osc = df_osc["fprat90tpr"].values[0]
 
-    df_fd = compute_metrics(dataset_stats, category="is_fd", metrics = ["wass_dist"])
+    dataset_stats_fd = dataset_stats.loc[(dataset_stats.is_fd == 1) | (dataset_stats.is_hall == 0)]
+    df_fd = compute_metrics(dataset_stats_fd, category="is_fd", metrics = metrics)
     auroc_fd = df_fd["auc-ROC"].values[0]
     fprat90_fd = df_fd["fprat90tpr"].values[0]
 
-    df_sd = compute_metrics(dataset_stats, category="is_sd", metrics = ["wass_dist"])
+    dataset_stats_sd = dataset_stats.loc[(dataset_stats.is_sd == 1) | ((dataset_stats.is_hall == 0))]
+    df_sd = compute_metrics(dataset_stats_sd, category="is_sd", metrics = metrics)
     auroc_sd = df_sd["auc-ROC"].values[0]
     fprat90_sd = df_sd["fprat90tpr"].values[0]
 
