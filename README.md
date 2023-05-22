@@ -27,7 +27,7 @@ After you unzip it, you will find two files (one with the stats for the hallucin
 
 To replicate our experiments, just run the code on `run_detection.ipynb`.
 
-If you want to replicate with our heldout data for Wass Combo, make sure to download the following file (Pandas dataframe):
+If you want to replicate our results with the heldout data for Wass Combo, make sure to download the following file (Pandas dataframe):
 ```shell
 https://web.tecnico.ulisboa.pt/~ist178550/data_heldout_for_thresholding.pkl
 ```
