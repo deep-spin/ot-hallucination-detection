@@ -79,7 +79,7 @@ def apply_length_restrictions(u_matrix, dataset_attn_train, args):
 
     return dataset_constraint
 
-def compute_detection_metrics(dataset_stats, args, bottom_k=4, metrics=["wass_dist"]):
+def compute_detection_metrics(dataset_stats, args, bottom_k=4, metrics=["wass_to_data"]):
     df_all = compute_metrics(dataset_stats, category="is_hall", metrics = metrics)
     auroc_all = df_all["auc-ROC"].values[0]
     fprat90_all = df_all["fprat90tpr"].values[0]
@@ -118,3 +118,7 @@ def wass_dist_computation(dataset_stats, dataset_attn_train, args):
             wasserstein_distances_sample = wasserstein_distance(u=attn_dist, df=dataset_constraint, metric_space=args.metric_space) # compute wasserstein distance
             wasserstein_distances.append(wasserstein_distances_sample)
     return wasserstein_distances
+
+def convert_score(X, scores_old_min, scores_old_max, scores_new_min=0, scores_new_max=1):      
+    X = scores_new_min + ((X - scores_new_min) * (scores_new_max - scores_new_min) / (scores_old_max - scores_old_min)) 
+    return X  
