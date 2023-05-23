@@ -34,12 +34,16 @@ https://web.tecnico.ulisboa.pt/~ist178550/data_heldout_for_thresholding.pkl
 
 ## If you found our work/code useful, please cite our work:
 ```bibtex
-@misc{guerreiro2022optimal,
-      title={Optimal Transport for Unsupervised Hallucination Detection in Neural Machine Translation}, 
-      author={Nuno M. Guerreiro and Pierre Colombo and Pablo Piantanida and André F. T. Martins},
-      year={2022},
-      eprint={2212.09631},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
+@inproceedings{guerreiro-etal-2023-optimal,
+    title = "Optimal Transport for Unsupervised Hallucination Detection in Neural Machine Translation",
+    author = "Guerreiro, Nuno M.  and
+      Colombo, Pierre  and
+      Piantanida, Pablo and
+      Martins, Andr{\'e}",
+    booktitle = "Proceedings of The 61st Annual Meeting of the Association for Computational Linguistics",
+    month = july,
+    year = "2023",
+    address = "Toronto, Canada",
+    publisher = "Association for Computational Linguistics",
 }
 ```
