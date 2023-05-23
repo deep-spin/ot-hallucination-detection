@@ -41,7 +41,7 @@ https://web.tecnico.ulisboa.pt/~ist178550/data_heldout_for_thresholding.pkl
       Piantanida, Pablo and
       Martins, Andr{\'e}",
     booktitle = "Proceedings of The 61st Annual Meeting of the Association for Computational Linguistics",
-    month = july,
+    month = "july",
     year = "2023",
     address = "Toronto, Canada",
     publisher = "Association for Computational Linguistics",
